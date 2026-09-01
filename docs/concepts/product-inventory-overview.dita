@@ -37,12 +37,17 @@
             </p>
         </section>
         <section>
-            <title>Inventory Stock Alerts</title>
+            <title>Low-Stock Monitoring</title>
 
             <p>
-                Branch inventory can be monitored against configured minimum stock
-                levels. Products at or below the minimum level should be reviewed
-                for replenishment.
+                The inventory system tracks the quantity of each product at a branch.
+                When the available quantity reaches or falls below the configured
+                minimum stock level, the product can be identified as low stock.
+            </p>
+
+            <p>
+                Store and branch users can use inventory information to monitor stock
+                levels and determine when products need to be restocked.
             </p>
         </section>
     </conbody>
