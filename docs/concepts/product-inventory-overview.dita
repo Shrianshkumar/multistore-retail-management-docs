@@ -36,5 +36,19 @@
                 retrieve inventory by branch or product.
             </p>
         </section>
+        <section>
+            <title>Low-Stock Monitoring</title>
+
+            <p>
+                The inventory system tracks the quantity of each product at a branch.
+                When the available quantity reaches or falls below the configured
+                minimum stock level, the product can be identified as low stock.
+            </p>
+
+            <p>
+                Store and branch users can use inventory information to monitor stock
+                levels and determine when products need to be restocked.
+            </p>
+        </section>
     </conbody>
 </concept>
