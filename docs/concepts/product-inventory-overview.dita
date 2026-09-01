@@ -36,5 +36,14 @@
                 retrieve inventory by branch or product.
             </p>
         </section>
+        <section>
+            <title>Inventory Stock Alerts</title>
+
+            <p>
+                Branch inventory can be monitored against configured minimum stock
+                levels. Products at or below the minimum level should be reviewed
+                for replenishment.
+            </p>
+        </section>
     </conbody>
 </concept>
