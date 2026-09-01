@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+
+<task id="create-product">
+    <title>Create a Product</title>
+
+    <shortdesc>
+        Create a product and associate it with a store and category.
+    </shortdesc>
+
+    <taskbody>
+
+        <prereq>
+            Ensure that you have permission to manage products.
+        </prereq>
+
+        <steps>
+
+            <step>
+                <cmd>Prepare the product information.</cmd>
+            </step>
+
+            <step>
+                <cmd>Send a POST request to
+                    <codeph>/api/products</codeph>.
+                </cmd>
+            </step>
+
+            <step>
+                <cmd>Provide the required product information,
+                    including the product name, SKU, price, category,
+                    store, and description.</cmd>
+            </step>
+
+            <step>
+                <cmd>Verify that the product was created successfully.</cmd>
+            </step>
+
+        </steps>
+
+        <result>
+            The product is created and associated with the specified
+            store and category.
+        </result>
+
+    </taskbody>
+</task>

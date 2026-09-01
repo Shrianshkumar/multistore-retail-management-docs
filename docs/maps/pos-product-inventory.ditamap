@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+
+
+<map>
+
+    <title>POS Product and Inventory Guide</title>
+
+    <topicref href="../concepts/product-inventory-overview.dita"/>
+
+    <topicref href="../tasks/create-product.dita"/>
+
+    <topicref href="../references/inventory-api-reference.dita"/>
+
+    <topicref href="../references/product-api-reference.dita"/>
+
+</map>

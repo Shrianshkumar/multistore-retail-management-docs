@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+
+<reference id="product-api-reference">
+
+    <title>Product API Reference</title>
+
+    <shortdesc>
+        Reference information for the product management API.
+    </shortdesc>
+
+    <refbody>
+
+        <section>
+            <title>Create a Product</title>
+
+            <p>
+                Creates a new product for a store.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Purpose</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>POST</stentry>
+                    <stentry>/api/products</stentry>
+                    <stentry>
+                        Creates a product.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Retrieve a Product</title>
+
+            <p>
+                Retrieves product information using the product identifier.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Purpose</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>GET</stentry>
+                    <stentry>/api/products/{id}</stentry>
+                    <stentry>
+                        Retrieves a product by ID.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Update a Product</title>
+
+            <p>
+                Updates information for an existing product.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Purpose</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>PATCH</stentry>
+                    <stentry>/api/products/{id}</stentry>
+                    <stentry>
+                        Updates product information.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Delete a Product</title>
+
+            <p>
+                Deletes an existing product.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Purpose</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>DELETE</stentry>
+                    <stentry>/api/products/{id}</stentry>
+                    <stentry>
+                        Deletes a product by ID.
+                    </stentry>
+                </strow>
+
+            </simpletable>
+
+        </section>
+
+    </refbody>
+
+</reference>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+
+<reference id="inventory-api-reference">
+
+    <title>Inventory API Reference</title>
+
+    <shortdesc>
+        Reference information for the inventory management endpoints.
+    </shortdesc>
+
+    <refbody>
+
+        <section>
+            <title>Create Inventory</title>
+
+            <p>
+                Creates an inventory record for a product at a branch.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>POST</stentry>
+                    <stentry>/api/inventories</stentry>
+                    <stentry>
+                        Creates an inventory record.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Update Inventory</title>
+
+            <p>
+                Updates stock information for an existing inventory record.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>PUT</stentry>
+                    <stentry>/api/inventories/{id}</stentry>
+                    <stentry>
+                        Updates inventory information for the specified record.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Retrieve Branch Inventory</title>
+
+            <p>
+                Retrieves inventory information for a specific branch.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>GET</stentry>
+                    <stentry>/api/inventories/branch/{branchId}</stentry>
+                    <stentry>
+                        Retrieves inventory associated with the specified branch.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+        <section>
+            <title>Retrieve Product Inventory</title>
+
+            <p>
+                Retrieves inventory information for a specific product.
+            </p>
+
+            <simpletable>
+                <sthead>
+                    <stentry>Method</stentry>
+                    <stentry>Endpoint</stentry>
+                    <stentry>Description</stentry>
+                </sthead>
+
+                <strow>
+                    <stentry>GET</stentry>
+                    <stentry>/api/inventories/product/{productId}</stentry>
+                    <stentry>
+                        Retrieves inventory associated with the specified product.
+                    </stentry>
+                </strow>
+            </simpletable>
+
+        </section>
+
+    </refbody>
+
+</reference>

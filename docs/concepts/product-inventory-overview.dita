@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+
+
+<concept id="product-inventory-overview">
+    <title>Product and Inventory Management</title>
+
+    <shortdesc>
+        Product and inventory management enables store users to
+        manage product information and track stock across branches.
+    </shortdesc>
+
+    <conbody>
+        <p>
+            Products represent items available for sale within a store.
+            Each product includes information such as a name, SKU,
+            price, category, image, and description.
+        </p>
+        <p>
+            Inventory tracks the quantity of a product at a specific
+            branch. Inventory information includes the quantity,
+            minimum stock level, and last restock timestamp.
+        </p>
+        <section>
+            <title>Product Management</title>
+            <p>
+                Product management provides operations for creating,
+                retrieving, updating, deleting, and searching products.
+            </p>
+        </section>
+        <section>
+            <title>Inventory Management</title>
+            <p>
+                Inventory is maintained at the branch level. Users can
+                create inventory records, update stock quantities, and
+                retrieve inventory by branch or product.
+            </p>
+        </section>
+    </conbody>
+</concept>
