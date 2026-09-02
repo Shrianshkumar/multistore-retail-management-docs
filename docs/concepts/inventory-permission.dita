@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept
+  PUBLIC "-//OASIS//DTD DITA Concept//EN"
+  "concept.dtd">
+
+<concept id="inventory-permission">
+
+    <title>Inventory Management Permission</title>
+
+    <conbody>
+
+        <p id="permission-text">
+            Users must have permission to manage inventory for the branch.
+        </p>
+
+    </conbody>
+
+</concept>
