@@ -10,7 +10,9 @@
 
     <topicref href="../tasks/create-product.dita"/>
 
-    <topicref href="../references/inventory-api-reference.dita"/>
+    <topicref href="../tasks/update-inventory.dita"/>
+
+    <topicref keys="inventory-api" href="../references/inventory-api-reference.dita"/>
 
     <topicref href="../references/product-api-reference.dita"/>
 

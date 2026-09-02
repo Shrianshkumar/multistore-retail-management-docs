@@ -58,6 +58,16 @@
                     </stentry>
                 </strow>
             </simpletable>
+            <p>Example request:</p>
+
+            <codeblock>
+                PUT /api/inventories/{id}
+                Content-Type: application/json
+
+                {
+                    "quantity": 25
+                }
+            </codeblock>
 
         </section>
 

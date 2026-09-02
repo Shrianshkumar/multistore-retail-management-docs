@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task
+  PUBLIC "-//OASIS//DTD DITA Task//EN"
+  "task.dtd">
+
+<task id="update-inventory">
+
+    <title>Update Inventory Stock</title>
+
+    <shortdesc>
+        Update the available stock quantity for a product at a branch.
+    </shortdesc>
+
+    <taskbody>
+
+        <prereq>
+            <p conref="../concepts/inventory-permission.dita#inventory-permission/permission-text"/>
+        </prereq>
+
+        <context>
+            <p audience="manager">
+                Store managers can update inventory quantities for products assigned
+                to their branches.
+            </p>
+
+            <p audience="cashier">
+                Cashiers can view inventory information but cannot update stock
+                quantities.
+            </p>
+        </context>
+
+        <steps>
+
+            <step>
+                <cmd>Open the inventory management interface.</cmd>
+            </step>
+
+            <step>
+                <cmd>
+                    Select the product and branch whose stock you want to update.
+                </cmd>
+            </step>
+
+            <step>
+                <cmd>Enter the new inventory quantity.</cmd>
+            </step>
+
+            <step>
+                <cmd>Save the inventory update.</cmd>
+            </step>
+
+        </steps>
+
+        <result>
+            The inventory quantity is updated for the selected product and branch.
+
+            <note type="important">
+                If the updated quantity is at or below the configured minimum
+                stock level, the product may be identified as low stock.
+            </note>
+
+            For endpoint details, see
+            <xref keyref="inventory-api">
+                Inventory API Reference
+            </xref>
+        </result>
+
+    </taskbody>
+
+</task>
