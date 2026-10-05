@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+
+<concept id="pos-system-overview">
+
+    <title>Multi-Tenant POS System Overview</title>
+
+    <shortdesc>
+        The Multi-Tenant POS System is a SaaS-based point-of-sale platform that
+        enables businesses to manage stores, branches, products, inventory,
+        orders, customers, payments, refunds, and subscriptions.
+    </shortdesc>
+
+    <conbody>
+
+        <section>
+            <title>Overview</title>
+
+            <p>
+                The Multi-Tenant POS System is a Spring Boot-based REST API
+                application designed to support multiple businesses within a
+                single SaaS platform. Each store can manage its branches,
+                employees, products, inventory, customers, orders, and
+                financial operations.
+            </p>
+
+            <p>
+                The system provides role-based access for administrators,
+                store managers, branch managers, branch administrators,
+                cashiers, and customers. Authentication is implemented using
+                JSON Web Tokens (JWT) to provide stateless authentication for
+                protected API requests.
+            </p>
+        </section>
+
+        <section>
+            <title>Key Capabilities</title>
+
+            <ul>
+                <li>Store and branch management</li>
+                <li>User and role management</li>
+                <li>Product and category management</li>
+                <li>Real-time inventory management</li>
+                <li>Point-of-sale order processing</li>
+                <li>Customer management</li>
+                <li>Shift management and cashier reconciliation</li>
+                <li>Refund and return processing</li>
+                <li>Financial analytics and reporting</li>
+                <li>Subscription and payment management</li>
+            </ul>
+        </section>
+
+        <section>
+            <title>System Architecture</title>
+
+            <p>
+                The application follows a layered architecture consisting of
+                presentation, service, and persistence layers. REST controllers
+                handle API requests, service components implement business
+                logic, and repositories provide access to the MySQL database
+                through Spring Data JPA and Hibernate.
+            </p>
+
+            <p>
+                The system also includes security, validation, exception
+                handling, and data-mapping components to support the application
+                workflow.
+            </p>
+        </section>
+
+        <section>
+            <title>Multi-Tenant Model</title>
+
+            <p>
+                The system uses store and branch identifiers to associate
+                business data with the appropriate tenant and branch. This
+                model allows multiple businesses to use the same application
+                while maintaining separation between their operational data.
+            </p>
+        </section>
+
+    </conbody>
+
+</concept>

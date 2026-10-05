@@ -1,0 +1,364 @@
+openapi: 3.0.3
+
+info:
+  title: POS Inventory API
+  version: 1.0.0
+  description: |
+    REST API for managing product inventory across retail branches.
+
+servers:
+  - url: http://localhost:8080
+
+tags:
+  - name: Inventory
+    description: Inventory management operations
+
+security:
+  - bearerAuth: []
+
+paths:
+  /api/inventories:
+    post:
+      tags:
+        - Inventory
+      summary: Create inventory
+      operationId: createInventory
+      description: Creates an inventory record for a product at a branch.
+      requestBody:
+        required: true
+        description: Inventory information to create.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryRequest'
+            example:
+              productId: 101
+              branchId: 10
+              quantity: 50
+              minimumStockLevel: 10
+      responses:
+        '201':
+          description: Inventory record created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Inventory'
+              example:
+                id: 5001
+                product:
+                  id: 101
+                  name: Wireless Keyboard
+                branchId: 10
+                quantity: 50
+                minimumStockLevel: 10
+                status: IN_STOCK
+                lastRestockedAt: "2026-09-02T10:30:00Z"
+        '400':
+          description: Invalid inventory data.
+        '401':
+          description: Authentication is required.
+
+    get:
+      tags:
+        - Inventory
+      summary: List inventory
+      operationId: listInventory
+      description: Retrieves inventory records with optional filtering and pagination.
+      parameters:
+        - name: branchId
+          in: query
+          required: false
+          description: Filters inventory records by branch.
+          schema:
+            type: integer
+            format: int64
+
+        - name: lowStock
+          in: query
+          required: false
+          description: Returns only inventory records at or below the minimum stock level.
+          schema:
+            type: boolean
+            default: false
+
+        - name: page
+          in: query
+          required: false
+          description: Page number to retrieve.
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+
+        - name: pageSize
+          in: query
+          required: false
+          description: Number of inventory records to return per page.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+
+      responses:
+        '200':
+          description: Inventory records retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InventoryListResponse'
+              example:
+                items:
+                  - id: 5001
+                    product:
+                      id: 101
+                      name: Wireless Keyboard
+                    branchId: 10
+                    quantity: 50
+                    minimumStockLevel: 10
+                    status: IN_STOCK
+                    lastRestockedAt: "2026-09-02T10:30:00Z"
+
+                  - id: 5002
+                    product:
+                      id: 102
+                      name: USB Mouse
+                    branchId: 10
+                    quantity: 5
+                    minimumStockLevel: 10
+                    status: LOW_STOCK
+                    lastRestockedAt: "2026-09-01T15:20:00Z"
+
+                page: 1
+                pageSize: 20
+                totalItems: 75
+
+        '400':
+          description: Invalid query parameters.
+        '401':
+          description: Authentication is required.
+
+  /api/inventories/{id}:
+    put:
+      tags:
+        - Inventory
+      summary: Update inventory
+      operationId: updateInventory
+      description: Updates stock information for an existing inventory record.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique identifier of the inventory record.
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        description: Updated inventory information.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InventoryUpdateRequest'
+            example:
+              quantity: 35
+              minimumStockLevel: 10
+      responses:
+        '200':
+          description: Inventory record updated successfully.
+        '400':
+          description: Invalid inventory data.
+        '401':
+          description: Authentication is required.
+        '403':
+          description: The authenticated user does not have permission to update inventory.
+        '404':
+          $ref: '#/components/responses/InventoryNotFound'
+
+  /api/inventories/branch/{branchId}:
+    get:
+      tags:
+        - Inventory
+      summary: Get branch inventory
+      operationId: getBranchInventory
+      description: Retrieves inventory information for a specific branch.
+      parameters:
+        - name: branchId
+          in: path
+          required: true
+          description: Unique identifier of the branch.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Branch inventory retrieved successfully.
+        '401':
+          description: Authentication is required.
+        '404':
+          description: Branch not found.
+
+components:
+  schemas:
+
+    InventoryRequest:
+      type: object
+      required:
+        - productId
+        - branchId
+        - quantity
+        - minimumStockLevel
+      properties:
+        productId:
+          type: integer
+          format: int64
+          description: Unique identifier of the product.
+
+        branchId:
+          type: integer
+          format: int64
+          description: Unique identifier of the branch.
+
+        quantity:
+          type: integer
+          minimum: 0
+          description: Current available stock quantity.
+
+        minimumStockLevel:
+          type: integer
+          minimum: 0
+          description: Minimum stock level used to identify low-stock inventory.
+
+    Inventory:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier of the inventory record.
+
+        product:
+          $ref: '#/components/schemas/ProductSummary'
+
+        branchId:
+          type: integer
+          format: int64
+          description: Unique identifier of the branch.
+
+        quantity:
+          type: integer
+          minimum: 0
+          description: Current available stock quantity.
+
+        minimumStockLevel:
+          type: integer
+          minimum: 0
+          description: Minimum stock level configured for the inventory.
+
+        lastRestockedAt:
+          type: string
+          format: date-time
+          description: Date and time when the inventory was last restocked.
+        
+        status:
+          type: string
+          enum:
+            - IN_STOCK
+            - LOW_STOCK
+            - OUT_OF_STOCK
+          description: Current inventory status.
+          example: LOW_STOCK
+
+    InventoryUpdateRequest:
+      type: object
+      required:
+        - quantity
+        - minimumStockLevel
+      properties:
+        quantity:
+          type: integer
+          minimum: 0
+          description: Updated available stock quantity.
+
+        minimumStockLevel:
+          type: integer
+          minimum: 0
+          description: Updated minimum stock level.
+
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Application-specific error code.
+          example: INVENTORY_NOT_FOUND
+
+        message:
+          type: string
+          description: Human-readable description of the error.
+          example: Inventory record was not found.
+
+    InventoryListResponse:
+      type: object
+      required:
+        - items
+        - page
+        - pageSize
+        - totalItems
+      properties:
+        items:
+          type: array
+          description: Inventory records returned for the requested page.
+          items:
+            $ref: '#/components/schemas/Inventory'
+
+        page:
+          type: integer
+          description: Current page number.
+          example: 1
+
+        pageSize:
+          type: integer
+          description: Number of records returned per page.
+          example: 20
+
+        totalItems:
+          type: integer
+          description: Total number of inventory records matching the query.
+          example: 75
+
+    ProductSummary:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique identifier of the product.
+
+        name:
+          type: string
+          description: Product name.
+          example: Wireless Keyboard
+
+  responses:
+    InventoryNotFound:
+      description: Inventory record not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: INVENTORY_NOT_FOUND
+            message: Inventory record was not found.
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
